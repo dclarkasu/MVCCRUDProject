@@ -27,7 +27,6 @@ public class StudentDAOImpl implements StudentDAO {
 
 	@Override
 	public void addStudent(Student stud) {
-		// TODO : Implement method
 		students.add(stud);
 	}
 	
@@ -43,26 +42,26 @@ public class StudentDAOImpl implements StudentDAO {
 		students.remove(students.indexOf(stud));
 	}
 	
-//	@PostConstruct
-//	public void init() {
-//		// Retrieve an input stream from the servlet context
-//		// rather than directly from the file system
-//		try (InputStream is = wac.getServletContext().getResourceAsStream(FILE_NAME);
-//				BufferedReader buf = new BufferedReader(new InputStreamReader(is));) {
-//			String line = buf.readLine();
-//			while ((line = buf.readLine()) != null) {
-//				String[] tokens = line.split(",");
-//				String abbrev = tokens[1];
-//				String name = tokens[2];
-//				String capital = tokens[3];
+	@PostConstruct
+	public void init() {
+		// Retrieve an input stream from the servlet context
+		// rather than directly from the file system
+		try (InputStream is = wac.getServletContext().getResourceAsStream("/WebContent/styles.css");
+				BufferedReader buf = new BufferedReader(new InputStreamReader(is));) {
+			String line = buf.readLine();
+			while ((line = buf.readLine()) != null) {
+				String[] tokens = line.split(",");
+				String firstName = tokens[0];
+				String lastName = tokens[1];
+				Integer grade = Integer.valueOf(tokens[2]);
 //				String latitude = tokens[4];
 //				String longitude = tokens[5];
-//				states.add(new Student(abbrev, name, capital, latitude, longitude));
-//			}
-//		} catch (Exception e) {
-//			System.err.println(e);
-//		}
-//	}
+				students.add(new Student(firstName, lastName, grade));
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+	}
 //
 //	@Override
 //	public Student getStateByName(String name) {

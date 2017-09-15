@@ -2,13 +2,13 @@ package com.danielclark.data;
 
 public class Student {
 	private String firstName, lastName;
-	private int grade;
+	private Integer grade;
 
 	public Student() {
 		super();
 	}
 
-	public Student(String firstName, String lastName, int grade) {
+	public Student(String firstName, String lastName, Integer grade) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
