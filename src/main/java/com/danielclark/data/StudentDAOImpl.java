@@ -14,7 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @Component
 public class StudentDAOImpl implements StudentDAO {
-	private static final String FILE_NAME = "/WEB-INF/states.csv";
+//	private static final String FILE_NAME = "/WEB-INF/states.csv";
 	private List<Student> students = new ArrayList<>();
 
 	/*
@@ -29,6 +29,18 @@ public class StudentDAOImpl implements StudentDAO {
 	public void addStudent(Student stud) {
 		// TODO : Implement method
 		students.add(stud);
+	}
+	
+	@Override
+	public void displayStudents(List<Student> students) {
+		for (Student stud : students) {
+			System.out.println(stud);
+		}
+	}
+	
+	@Override
+	public void removeStudent(Student stud) {
+		students.remove(students.indexOf(stud));
 	}
 	
 //	@PostConstruct
