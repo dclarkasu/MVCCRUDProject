@@ -24,7 +24,7 @@ public class StudentController {
 		this.studentDAO = studentDAO;
 	}
 	
-	@RequestMapping(path="/NewStudent.do", method=RequestMethod.GET)
+	@RequestMapping(path="/NewStudent.do", method=RequestMethod.POST)
 	public ModelAndView addNewStudent(Student stud) {
 		ModelAndView mv = new ModelAndView();
 		studentDAO.addStudent(stud);
@@ -33,7 +33,7 @@ public class StudentController {
 		mv.setViewName("result.jsp");
 		return mv;
 	}
-	@RequestMapping(path="/RemoveStudent.do", method=RequestMethod.GET)
+	@RequestMapping(path="/RemoveStudent.do", method=RequestMethod.POST)
 	public ModelAndView removeStudent(Student stud) {
 		ModelAndView mv = new ModelAndView();
 		studentDAO.removeStudent(stud);
@@ -52,7 +52,14 @@ public class StudentController {
 		return mv;
 	}
 	
-	
+	@RequestMapping(path= "editStudents.do", 
+			method=RequestMethod.GET)
+	public ModelAndView editStudents() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("removeStudent.jsp");
+		mv.addObject("students", studentDAO.getAllStudents());
+		return mv;
+	}
 	
 	
 

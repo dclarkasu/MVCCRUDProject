@@ -44,12 +44,13 @@ public class StudentDAOImpl implements StudentDAO {
 			String line = buf.readLine();
 			while ((line = buf.readLine()) != null) {
 				String[] tokens = line.split(",");
-				String firstName = tokens[0];
-				String lastName = tokens[1];
-				Integer grade = Integer.valueOf(tokens[2]);
+				Integer id = Integer.valueOf(tokens[0]);
+				String firstName = tokens[1];
+				String lastName = tokens[2];
+				Integer grade = Integer.valueOf(tokens[3]);
 //				String latitude = tokens[4];
 //				String longitude = tokens[5];
-				students.add(new Student(firstName, lastName, grade));
+				students.add(new Student(firstName, lastName, id, grade));
 			}
 			System.out.println("***************" + students);
 		} catch (Exception e) {

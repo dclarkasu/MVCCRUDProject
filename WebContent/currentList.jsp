@@ -7,4 +7,5 @@
 		${student.firstName }
 		${student.lastName }
 		${student.grade }
+		<br />
 	</c:forEach>
