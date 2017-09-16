@@ -14,7 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @Component
 public class StudentDAOImpl implements StudentDAO {
-//	private static final String FILE_NAME = "/WEB-INF/states.csv";
+	private static final String FILE_NAME = "/WEB-INF/students.csv";
 	private List<Student> students = new ArrayList<>();
 
 	/*
@@ -30,12 +30,7 @@ public class StudentDAOImpl implements StudentDAO {
 		students.add(stud);
 	}
 	
-	@Override
-	public void displayStudents(List<Student> students) {
-		for (Student stud : students) {
-			System.out.println(stud);
-		}
-	}
+
 	
 	@Override
 	public void removeStudent(Student stud) {
@@ -44,9 +39,7 @@ public class StudentDAOImpl implements StudentDAO {
 	
 	@PostConstruct
 	public void init() {
-		// Retrieve an input stream from the servlet context
-		// rather than directly from the file system
-		try (InputStream is = wac.getServletContext().getResourceAsStream("/WebContent/styles.css");
+		try (InputStream is = wac.getServletContext().getResourceAsStream(FILE_NAME);
 				BufferedReader buf = new BufferedReader(new InputStreamReader(is));) {
 			String line = buf.readLine();
 			while ((line = buf.readLine()) != null) {
@@ -58,11 +51,26 @@ public class StudentDAOImpl implements StudentDAO {
 //				String longitude = tokens[5];
 				students.add(new Student(firstName, lastName, grade));
 			}
+			System.out.println("***************" + students);
 		} catch (Exception e) {
 			System.err.println(e);
 		}
 	}
-//
+
+
+
+	@Override
+	public List<Student> getAllStudents() {
+		System.out.println("Here" + students);
+		return new ArrayList<>(students);
+	}
+
+	
+	
+	
+	
+	
+	
 //	@Override
 //	public Student getStateByName(String name) {
 //		// TODO : Implement method

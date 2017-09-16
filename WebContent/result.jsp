@@ -8,6 +8,7 @@
 <title>Students</title>
 </head>
 <body>
+<%-- <jsp:include page="navBarPartial.jsp"></jsp:include> --%>
 	<c:choose>
 		<c:when test="${! empty student }">
 			<ul>
@@ -20,5 +21,6 @@
 			<p>No student found</p>
 		</c:otherwise>
 	</c:choose>
+	<jsp:include page="currentList.jsp"></jsp:include>
 </body>
 </html>

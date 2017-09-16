@@ -1,5 +1,7 @@
 package com.danielclark.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,7 +17,6 @@ import com.danielclark.data.StudentDAO;
 @Controller
 @SessionAttributes ("student")
 public class StudentController {
-	// TODO : Autowire a StudentDAO and create getters and setters
 	@Autowired
 	  private StudentDAO studentDAO;
 
@@ -23,23 +24,37 @@ public class StudentController {
 		this.studentDAO = studentDAO;
 	}
 	
+	@RequestMapping(path="/NewStudent.do", method=RequestMethod.GET)
+	public ModelAndView addNewStudent(Student stud) {
+		ModelAndView mv = new ModelAndView();
+		studentDAO.addStudent(stud);
+		mv.addObject("student", stud);
+		mv.addObject("students", studentDAO.getAllStudents());
+		mv.setViewName("result.jsp");
+		return mv;
+	}
+	@RequestMapping(path="/RemoveStudent.do", method=RequestMethod.GET)
+	public ModelAndView removeStudent(Student stud) {
+		ModelAndView mv = new ModelAndView();
+		studentDAO.removeStudent(stud);
+		mv.addObject("student", stud);
+		mv.addObject("students", studentDAO.getAllStudents());
+		mv.setViewName("result.jsp");
+		return mv;
+	}
 
-	// TODO : Implement a request handler for:
-	// path "GetStateData.do"
-	// params "name"
-	// method GET
-	// return : ModelAndView
-	// view : "result.jsp"
-	// object : "state", getStateByName
-//	@RequestMapping(path="GetStateData.do", 
-//			params="name",
-//			method=RequestMethod.GET)
-//	public ModelAndView getByName(@RequestParam("name") String n) {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("result.jsp");
-//		mv.addObject("state", studentDAO.getStateByName(n));
-//		return mv;
-//	}
+	@RequestMapping(path= "studentList.do", 
+			method=RequestMethod.GET)
+	public ModelAndView getAllStudents() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("studentList.jsp");
+		mv.addObject("students", studentDAO.getAllStudents());
+		return mv;
+	}
+	
+	
+	
+	
 
 	// TODO : Implement a request handler for:
 	// path "GetStateData.do"
@@ -58,20 +73,6 @@ public class StudentController {
 //	}
 	
 
-	// TODO : Implement a request handler for:
-	// path "NewState.do"
-	// method POST
-	// command object : State
-	// return : ModelAndView
-	// view : "result.jsp"
-	@RequestMapping(path="/NewStudent.do", method=RequestMethod.GET)
-	public ModelAndView addNewStudent(Student stud) {
-		ModelAndView mv = new ModelAndView();
-		studentDAO.addStudent(stud);
-		mv.addObject("student", stud);
-		mv.setViewName("result.jsp");
-		return mv;
-	}
 	//Method allows user to click next and view the next state
 //	@RequestMapping(path="GetStateData.do", params="next", method=RequestMethod.GET)
 //	public ModelAndView getNextState(@ModelAttribute("state") Student state) { // same as writing @RequestParm("abbr")
