@@ -6,24 +6,12 @@
 <head>
 <link rel="stylesheet" type="text/css" href="styles.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Students</title>
+<title>Student Management System</title>
 </head>
 <body>
-<jsp:include page="navBarPartial.jsp"></jsp:include>
-	<c:choose>
-		<c:when test="${! empty student }">
-			<ul>
-				<li>${student.firstName }</li>
-				<li>${student.lastName }</li>
-				<li>${student.grade }</li>
-			</ul>
-		</c:when>
-		<c:otherwise>
-			<p>No student found</p>
-		</c:otherwise>
-	</c:choose>
+
 	<jsp:include page="currentList.jsp"></jsp:include>
+
+
 </body>
 </html>
-
-<!-- On this page: form with buttons that allow delete and edit -->

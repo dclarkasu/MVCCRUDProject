@@ -24,9 +24,12 @@ public class StudentController {
 		this.studentDAO = studentDAO;
 	}
 	
+	
 	@RequestMapping(path="/NewStudent.do", method=RequestMethod.POST)
 	public ModelAndView addNewStudent(Student stud) {
 		ModelAndView mv = new ModelAndView();
+		stud.getFirstName().toUpperCase();
+		stud.getLastName().toUpperCase();
 		studentDAO.addStudent(stud);
 		mv.addObject("student", stud);
 		mv.addObject("students", studentDAO.getAllStudents());
@@ -34,20 +37,38 @@ public class StudentController {
 		return mv;
 	}
 	@RequestMapping(path="/RemoveStudent.do", method=RequestMethod.POST)
-	public ModelAndView removeStudent(Student stud) {
+	public ModelAndView removeStudent(int id) { // only takes an id
 		ModelAndView mv = new ModelAndView();
-		studentDAO.removeStudent(stud);
-		mv.addObject("student", stud);
+		studentDAO.removeStudent(id);
+//		mv.addObject("student", stud);
+		mv.addObject("students", studentDAO.getAllStudents());
+		mv.setViewName("result.jsp");
+		return mv;
+	}
+	@RequestMapping(path="/findStudent.do", method=RequestMethod.GET)
+	public ModelAndView findStudent(int id) {
+		ModelAndView mv = new ModelAndView();
+		Student studentById = studentDAO.getStudentById(id);
+		mv.addObject("student", studentById);
 		mv.addObject("students", studentDAO.getAllStudents());
 		mv.setViewName("result.jsp");
 		return mv;
 	}
 
-	@RequestMapping(path= "studentList.do", 
+	@RequestMapping(path= "/home.do", 
 			method=RequestMethod.GET)
 	public ModelAndView getAllStudents() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("studentList.jsp");
+		mv.setViewName("home.jsp");
+		mv.addObject("students", studentDAO.getAllStudents());
+		return mv;
+	}
+	@RequestMapping(path= "EditExistingStudent.do", 
+			method=RequestMethod.POST)
+	public ModelAndView editExistingStudent(Student stud) {
+		ModelAndView mv = new ModelAndView();
+		studentDAO.updateStudent(stud);
+		mv.setViewName("studentList.jsp");//individual studnt page
 		mv.addObject("students", studentDAO.getAllStudents());
 		return mv;
 	}

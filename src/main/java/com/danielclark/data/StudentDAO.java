@@ -5,7 +5,9 @@ import java.util.List;
 public interface StudentDAO {
 	
 	public void addStudent(Student stud);
-	public void removeStudent(Student stud);
+	public void removeStudent(int id);
+	public Student updateStudent(Student stud);
+	public Student getStudentById(int id);
 	public List<Student> getAllStudents();
 	
 //  public Student getStateByAbbreviation(String abbreviation);

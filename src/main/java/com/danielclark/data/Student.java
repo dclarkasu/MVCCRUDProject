@@ -2,29 +2,24 @@ package com.danielclark.data;
 
 public class Student {
 	private String firstName, lastName;
-	private Integer id, grade;
+	private int id, grade;
 
 	public Student() {
 		super();
 	}
 
-	public Student(String firstName, String lastName, Integer id, Integer grade) {
+	public Student(String firstName, String lastName, int grade) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.grade = grade;
+	}
+
+	public Student(String firstName, String lastName, int id, int grade) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.id = id;
-		this.grade = grade;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setGrade(Integer grade) {
 		this.grade = grade;
 	}
 
@@ -44,6 +39,14 @@ public class Student {
 		this.lastName = lastName;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public int getGrade() {
 		return grade;
 	}
@@ -52,11 +55,10 @@ public class Student {
 		this.grade = grade;
 	}
 
+
 	@Override
 	public String toString() {
 		return "firstName=" + firstName + ", lastName=" + lastName + ", grade=" + grade + "\n";
 	}
-
-	
 
 }

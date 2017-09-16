@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<!-- page should be rendered obsolete once "Remove" button sends data via url to remove method
+Will send to jsp that says ""Student removed" and has nav bar -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +22,7 @@
 		<input type="text" name="lastName" value=""/>
 		Grade Number:
 		<input type="text" name="grade" value=""/>
-		<input type="submit" value="Add Student"/>
+		<input type="submit" value="Remove Student"/>
 </form>
 <div action="editStudents.do" method="GET">
 <jsp:include page="currentList.jsp"></jsp:include>

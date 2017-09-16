@@ -29,14 +29,17 @@ public class StudentDAOImpl implements StudentDAO {
 	public void addStudent(Student stud) {
 		students.add(stud);
 	}
-	
 
-	
 	@Override
-	public void removeStudent(Student stud) {
-		students.remove(students.indexOf(stud));
+	public void removeStudent(int id) {
+		for(int i = 0; i < students.size(); i++) {
+			
+			break;
+		}
+		//if i is less than students.size()
+		//remove student at index(i)
 	}
-	
+
 	@PostConstruct
 	public void init() {
 		try (InputStream is = wac.getServletContext().getResourceAsStream(FILE_NAME);
@@ -44,12 +47,10 @@ public class StudentDAOImpl implements StudentDAO {
 			String line = buf.readLine();
 			while ((line = buf.readLine()) != null) {
 				String[] tokens = line.split(",");
-				Integer id = Integer.valueOf(tokens[0]);
+				int id = Integer.parseInt(tokens[0]);
 				String firstName = tokens[1];
 				String lastName = tokens[2];
-				Integer grade = Integer.valueOf(tokens[3]);
-//				String latitude = tokens[4];
-//				String longitude = tokens[5];
+				int grade = Integer.parseInt((tokens[3]));
 				students.add(new Student(firstName, lastName, id, grade));
 			}
 			System.out.println("***************" + students);
@@ -58,76 +59,86 @@ public class StudentDAOImpl implements StudentDAO {
 		}
 	}
 
-
-
 	@Override
 	public List<Student> getAllStudents() {
 		System.out.println("Here" + students);
 		return new ArrayList<>(students);
 	}
 
-	
-	
-	
-	
-	
-	
-//	@Override
-//	public Student getStateByName(String name) {
-//		// TODO : Implement method
-//		Student s = null;
-//		// Find the state by it's name in the 'states' array
-//		// If found, assign the state to 's'
-//		for (Student st : states) {
-//			if (st.getName().equalsIgnoreCase(name)) {
-//				s = st;
-//				break;
-//			}
-//		}
-//
-//		return s;
-//	}
-//
-//	@Override
-//	public Student getStateByAbbreviation(String abbrev) {
-//		// TODO : Implement method
-//		Student s = null;
-//		// Find the state by it's abbreviation in the 'states' array
-//		// If found, assign the state to 's'
-//		for (Student st : states) {
-//			if (st.getAbbreviation().equalsIgnoreCase(abbrev)) {
-//				s = st;
-//				break;
-//			}
-//		}
-//		return s;
-//	}
+	@Override
+	public Student updateStudent(Student stud) {
+		stud.setFirstName(stud.getFirstName());
+		stud.setLastName(stud.getLastName());
+		stud.setGrade(stud.getGrade());
+		return stud;
+	}
 
+	@Override
+	public Student getStudentById(int id) {
+		Student stud = null;
+		for(Student st : students) {
+			if((st.getId()) == id) {
+				stud = st;
+				break;
+			}
+		}
+		return stud;
+	}
 
-//	@Override
-//	public Student getNextState(Student state) {
-//		// method finds index of state passed in and increases by 1
-//		int i = states.indexOf(state);
-//		if (i == states.indexOf(states.size() - 1)) {
-//			return states.get(0);
-//		} else {
-//
-//			i++;
-//			return states.get(i);
-//		}
-//	}
-//
-//	@Override
-//	public Student getPreviousState(Student state) {
-//		int i = states.indexOf(state);
-//		if (i == states.indexOf(0)) {
-//			return states.get(states.size()-1);
-//		} else {
-//
-//			i--;
-//			return states.get(i);
-//		}
-//	}
+	// @Override
+	// public Student getStateByName(String name) {
+	// // TODO : Implement method
+	// Student s = null;
+	// // Find the state by it's name in the 'states' array
+	// // If found, assign the state to 's'
+	// for (Student st : states) {
+	// if (st.getName().equalsIgnoreCase(name)) {
+	// s = st;
+	// break;
+	// }
+	// }
+	//
+	// return s;
+	// }
+	//
+	// @Override
+	// public Student getStateByAbbreviation(String abbrev) {
+	// // TODO : Implement method
+	// Student s = null;
+	// // Find the state by it's abbreviation in the 'states' array
+	// // If found, assign the state to 's'
+	// for (Student st : states) {
+	// if (st.getAbbreviation().equalsIgnoreCase(abbrev)) {
+	// s = st;
+	// break;
+	// }
+	// }
+	// return s;
+	// }
 
+	// @Override
+	// public Student getNextState(Student state) {
+	// // method finds index of state passed in and increases by 1
+	// int i = states.indexOf(state);
+	// if (i == states.indexOf(states.size() - 1)) {
+	// return states.get(0);
+	// } else {
+	//
+	// i++;
+	// return states.get(i);
+	// }
+	// }
+	//
+	// @Override
+	// public Student getPreviousState(Student state) {
+	// int i = states.indexOf(state);
+	// if (i == states.indexOf(0)) {
+	// return states.get(states.size()-1);
+	// } else {
+	//
+	// i--;
+	// return states.get(i);
+	// }
+	// }
 
 }

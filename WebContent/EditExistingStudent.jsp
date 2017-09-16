@@ -6,22 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="styles.css">
-<title>Add Student</title>
+<title>Edit Existing Student</title>
 </head>
 <body>
 <jsp:include page="navBarPartial.jsp"></jsp:include> 
 	<h2>Add a Student</h2>
-	<div class="New_Student_Form"></div>
-	<form action="NewStudent.do" method="POST">
+	<!-- <div class="New_Student_Form"></div> -->
+	<form action="EditExistingStudent.do" method="POST">
 		First Name:
 		<input type="text" name="firstName" value=""/>
 		Last Name:
 		<input type="text" name="lastName" value=""/>
 		Grade Number:
 		<input type="text" name="grade" value=""/>
-		<input type="submit" value="Add Student"/>
+		<input type="submit" value="Edit Student"/>
 	</form>
-	</div>
+	<!-- </div> -->
 
 </body>
 </html>
