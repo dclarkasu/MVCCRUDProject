@@ -5,6 +5,8 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="styles.css">
+<jsp:include page="navBarPartial.jsp"></jsp:include> 
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Student Management System</title>
 </head>

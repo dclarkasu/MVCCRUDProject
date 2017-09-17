@@ -27,17 +27,18 @@ public class StudentDAOImpl implements StudentDAO {
 
 	@Override
 	public void addStudent(Student stud) {
+		stud.setId(students.lastIndexOf(getAllStudents()) + 1);
 		students.add(stud);
 	}
 
 	@Override
 	public void removeStudent(int id) {
 		for(int i = 0; i < students.size(); i++) {
-			
-			break;
+			if((id == students.get(i).getId()) && id <= students.size()) {
+				students.remove(i);
+				break;
+			}
 		}
-		//if i is less than students.size()
-		//remove student at index(i)
 	}
 
 	@PostConstruct
@@ -61,15 +62,14 @@ public class StudentDAOImpl implements StudentDAO {
 
 	@Override
 	public List<Student> getAllStudents() {
-		System.out.println("Here" + students);
 		return new ArrayList<>(students);
 	}
 
 	@Override
-	public Student updateStudent(Student stud) {
-		stud.setFirstName(stud.getFirstName());
-		stud.setLastName(stud.getLastName());
-		stud.setGrade(stud.getGrade());
+	public Student updateStudent(Student stud, int id, String firstName, String lastName, int grade) {
+		stud.setFirstName(firstName);
+		stud.setLastName(lastName);
+		stud.setGrade(grade);
 		return stud;
 	}
 

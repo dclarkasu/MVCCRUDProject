@@ -6,7 +6,7 @@
 	<c:forEach var="student" items="${students}">
 		<a href="findStudent.do?id=${student.id}"> ${student.firstName }
 		${student.lastName }
-		${student.grade }
+		<%-- ${student.grade } --%>
 		</a>
 		<br />
 	</c:forEach>

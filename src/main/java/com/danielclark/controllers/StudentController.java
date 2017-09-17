@@ -1,10 +1,9 @@
 package com.danielclark.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,17 +31,18 @@ public class StudentController {
 		stud.getLastName().toUpperCase();
 		studentDAO.addStudent(stud);
 		mv.addObject("student", stud);
+		mv.addObject("message", "New Student Added");
 		mv.addObject("students", studentDAO.getAllStudents());
-		mv.setViewName("result.jsp");
+		mv.setViewName("/listStudents.do");
 		return mv;
 	}
 	@RequestMapping(path="/RemoveStudent.do", method=RequestMethod.POST)
 	public ModelAndView removeStudent(int id) { // only takes an id
 		ModelAndView mv = new ModelAndView();
 		studentDAO.removeStudent(id);
-//		mv.addObject("student", stud);
 		mv.addObject("students", studentDAO.getAllStudents());
-		mv.setViewName("result.jsp");
+		mv.addObject("message", "Student Removed");
+		mv.setViewName("/listStudents.do");
 		return mv;
 	}
 	@RequestMapping(path="/findStudent.do", method=RequestMethod.GET)
@@ -63,21 +63,40 @@ public class StudentController {
 		mv.addObject("students", studentDAO.getAllStudents());
 		return mv;
 	}
-	@RequestMapping(path= "EditExistingStudent.do", 
+	@RequestMapping(path= "/EditExistingStudent.do", 
 			method=RequestMethod.POST)
-	public ModelAndView editExistingStudent(Student stud) {
+	public ModelAndView editExistingStudent(@ModelAttribute Student stud, @RequestParam("editStudent") String edit) {
 		ModelAndView mv = new ModelAndView();
-		studentDAO.updateStudent(stud);
-		mv.setViewName("studentList.jsp");//individual studnt page
-		mv.addObject("students", studentDAO.getAllStudents());
+		switch(edit) {
+		case "Edit Student":
+			mv.addObject("student", stud);
+			mv.setViewName("EditExistingStudent.jsp");
+				break;
+		case "Remove Student":
+			studentDAO.removeStudent(stud.getId());
+			mv.addObject("message", "Student Removed");
+			mv.setViewName("/listStudents.do");
+				break;
+		}
 		return mv;
 	}
 	
-	@RequestMapping(path= "editStudents.do", 
-			method=RequestMethod.GET)
-	public ModelAndView editStudents() {
+	@RequestMapping(path= "editedStudent.do", 
+			method=RequestMethod.POST)
+	public ModelAndView editedStudent(@RequestParam("id") int id, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("grade") int grade) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("removeStudent.jsp");
+		Student stud = studentDAO.getStudentById(id);
+		studentDAO.updateStudent(stud, id, firstName, lastName, grade);
+		mv.setViewName("/listStudents.do");
+		mv.addObject("message", "New Student Added");
+		mv.addObject("student", stud);
+		return mv;
+	}
+	@RequestMapping(path= "/listStudents.do", 
+			method=RequestMethod.POST)
+	public ModelAndView listStudents() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("studentList.jsp");
 		mv.addObject("students", studentDAO.getAllStudents());
 		return mv;
 	}

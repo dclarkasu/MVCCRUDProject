@@ -14,17 +14,8 @@ Will send to jsp that says ""Student removed" and has nav bar -->
 </head>
 <body>
 <jsp:include page="navBarPartial.jsp"></jsp:include> 
-<h2>Remove a Student</h2>
-<form action="RemoveStudent.do" method="POST">
-		First Name:
-		<input type="text" name="firstName" value=""/>
-		Last Name:
-		<input type="text" name="lastName" value=""/>
-		Grade Number:
-		<input type="text" name="grade" value=""/>
-		<input type="submit" value="Remove Student"/>
-</form>
-<div action="editStudents.do" method="GET">
+<h2>Student Removed</h2>
+<h2>Current List of Students</h2>
 <jsp:include page="currentList.jsp"></jsp:include>
 </div>
 </body>

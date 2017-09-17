@@ -10,15 +10,16 @@
 </head>
 <body>
 <jsp:include page="navBarPartial.jsp"></jsp:include> 
-	<h2>Add a Student</h2>
+	<h2>Edit Student</h2>
 	<!-- <div class="New_Student_Form"></div> -->
-	<form action="EditExistingStudent.do" method="POST">
+	<form action="editedStudent.do" method="POST">
 		First Name:
-		<input type="text" name="firstName" value=""/>
+		<input type="text" name="firstName" value="${student.firstName}"/>
+		<input type="hidden" name="id" value="${student.id}" />
 		Last Name:
-		<input type="text" name="lastName" value=""/>
+		<input type="text" name="lastName" value="${student.lastName}"/>
 		Grade Number:
-		<input type="text" name="grade" value=""/>
+		<input type="text" name="grade" value="${student.grade}"/>
 		<input type="submit" value="Edit Student"/>
 	</form>
 	<!-- </div> -->

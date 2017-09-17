@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
+<h1>${message}</h1>
 <jsp:include page="navBarPartial.jsp"></jsp:include> 
 <jsp:include page="currentList.jsp"></jsp:include>
 </body>

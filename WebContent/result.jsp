@@ -13,15 +13,19 @@
 	<c:choose>
 		<c:when test="${! empty student }">
 			<ul>
-				<li>${student.firstName }</li>
-				<li>${student.lastName }</li>
-				<li>${student.grade }</li>
+				<li>${student.firstName}, ${student.lastName} </li>
+				<li>Grade: ${student.grade }</li>
 			</ul>
 		</c:when>
 		<c:otherwise>
 			<p>No student found</p>
 		</c:otherwise>
 	</c:choose>
+	<form action="EditExistingStudent.do" method="POST">
+		<input type="submit" name="editStudent" value="Edit Student">
+		<input type="submit" name="editStudent" value="Remove Student">
+		<%-- <input type=“hidden” value="${student.id}" /> --%>
+	</form>
 	<jsp:include page="currentList.jsp"></jsp:include>
 </body>
 </html>
