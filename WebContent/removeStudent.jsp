@@ -17,6 +17,6 @@ Will send to jsp that says ""Student removed" and has nav bar -->
 <h2>Student Removed</h2>
 <h2>Current List of Students</h2>
 <jsp:include page="currentList.jsp"></jsp:include>
-</div>
+
 </body>
 </html>
