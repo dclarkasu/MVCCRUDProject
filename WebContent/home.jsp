@@ -9,6 +9,7 @@
 <jsp:include page="navBarPartial.jsp"></jsp:include> 
 
 <title>Student Management System</title>
+<link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
 </head>
 <body>
 

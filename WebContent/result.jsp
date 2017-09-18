@@ -8,27 +8,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Students</title>
 <jsp:include page="navBarPartial.jsp"></jsp:include>
+<link href="https://fonts.googleapis.com/css?family=Cabin+Sketch"
+	rel="stylesheet">
 </head>
 <body>
 	<div class="result">
-		<c:choose>
-			<c:when test="${! empty student }">
-				<!-- <ul> -->
+		<div class="resultList">
+			<c:choose>
+				<c:when test="${! empty student }">
+					<!-- <ul> -->
 					${student.firstName}, ${student.lastName}<br />
 					Grade: ${student.grade }
 				<!-- </ul> -->
-			</c:when>
-			<c:otherwise>
-				<p>No student found</p>
-			</c:otherwise>
-		</c:choose>
+				</c:when>
+				<c:otherwise>
+					<p>No student found</p>
+				</c:otherwise>
+			</c:choose>
+		</div>
 		<form action="EditExistingStudent.do" method="POST">
-			<input type="hidden" name="id" value="${student.id}" />
-			<input type="submit" name="editStudent" value="Edit Student">
+			<input type="hidden" name="id" value="${student.id}" /> <input
+				type="submit" name="editStudent" value="Edit Student">
 		</form>
 		<form action="RemoveStudent.do" method="POST">
-			<input type="hidden" name="id" value="${student.id}" />
-			<input type="submit" name="removeStudent" value="Remove Student">
+			<input type="hidden" name="id" value="${student.id}" /> <input
+				type="submit" name="removeStudent" value="Remove Student">
 		</form>
 		<jsp:include page="currentList.jsp"></jsp:include>
 	</div>
