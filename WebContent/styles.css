@@ -1,7 +1,58 @@
 @charset "UTF-8";
 body {
-	background-color: grey;
+	padding-top: 100px;
+	background: url("https://mediadiversityuk.files.wordpress.com/2016/09/empty-classroom.jpg")
+	no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	text-decoration-color: yellow;
+	font-size: 20px;
 }
 .New_Student_Form {
 	text-decoration-color: black;
+}
+.currentList {
+	text-decoration-color: black;
+	color: black;
+	text-align: center;
+}
+.currentList a {
+	color: yellow;
+}
+
+.navBar {
+	height: 40px;
+	background-color: black;
+	width: 100%;
+	position: fixed;
+	margin: auto;
+	top: 0;
+	left: 0;
+	padding-top: 20px;
+	/*padding-bottom: 20px;*/
+}
+
+.navBar ul {
+	margin: 0;
+	padding: 0;
+	color: white;
+}
+
+.navBar ul li {
+	list-style: none;
+	color: white;
+}
+.navBar ul li a {
+	text-decoration: none;
+	float: left;
+	display: block;
+	padding: 10px 40px;
+	color: white;
+	font-size: 20px;
+}
+
+.result {
+	text-align: center;
 }

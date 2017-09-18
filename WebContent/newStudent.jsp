@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="styles.css">
 <title>Add Student</title>
+<jsp:include page="navBarPartial.jsp"></jsp:include> 
 </head>
 <body>
-<jsp:include page="navBarPartial.jsp"></jsp:include> 
 	<h2>Add a Student</h2>
 	<div class="New_Student_Form"></div>
 	<form action="NewStudent.do" method="POST">

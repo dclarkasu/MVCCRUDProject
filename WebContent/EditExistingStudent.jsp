@@ -7,11 +7,11 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="styles.css">
 <title>Edit Existing Student</title>
+<jsp:include page="navBarPartial.jsp"></jsp:include> 
 </head>
 <body>
-<jsp:include page="navBarPartial.jsp"></jsp:include> 
 	<h2>Edit Student</h2>
-	<!-- <div class="New_Student_Form"></div> -->
+	<!-- <div class="New_Student_Form">-->
 	<form action="editedStudent.do" method="POST">
 		First Name:
 		<input type="text" name="firstName" value="${student.firstName}"/>

@@ -7,26 +7,28 @@
 <link rel="stylesheet" type="text/css" href="styles.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Students</title>
+<jsp:include page="navBarPartial.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="navBarPartial.jsp"></jsp:include>
-	<c:choose>
-		<c:when test="${! empty student }">
-			<ul>
-				<li>${student.firstName}, ${student.lastName} </li>
-				<li>Grade: ${student.grade }</li>
-			</ul>
-		</c:when>
-		<c:otherwise>
-			<p>No student found</p>
-		</c:otherwise>
-	</c:choose>
-	<form action="EditExistingStudent.do" method="POST">
-		<input type="submit" name="editStudent" value="Edit Student">
-		<input type="submit" name="editStudent" value="Remove Student">
-		<%-- <input type=“hidden” value="${student.id}" /> --%>
-	</form>
-	<jsp:include page="currentList.jsp"></jsp:include>
+	<div class="result">
+		<c:choose>
+			<c:when test="${! empty student }">
+				<!-- <ul> -->
+					${student.firstName}, ${student.lastName}<br />
+					Grade: ${student.grade }
+				<!-- </ul> -->
+			</c:when>
+			<c:otherwise>
+				<p>No student found</p>
+			</c:otherwise>
+		</c:choose>
+		<form action="EditExistingStudent.do" method="POST">
+			<input type="submit" name="editStudent" value="Edit Student">
+			<input type="submit" name="editStudent" value="Remove Student">
+			<%-- <input type=“hidden” value="${student.id}" /> --%>
+		</form>
+		<jsp:include page="currentList.jsp"></jsp:include>
+	</div>
 </body>
 </html>
 
