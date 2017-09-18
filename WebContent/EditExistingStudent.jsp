@@ -15,11 +15,11 @@
 	<form action="editedStudent.do" method="POST">
 		First Name:
 		<input type="text" name="firstName" value="${student.firstName}"/>
-		<input type="hidden" name="id" value="${student.id}" />
 		Last Name:
 		<input type="text" name="lastName" value="${student.lastName}"/>
 		Grade Number:
 		<input type="text" name="grade" value="${student.grade}"/>
+		<input type="hidden" name="id" value="${student.id}" />
 		<input type="submit" value="Edit Student"/>
 	</form>
 	<!-- </div> -->

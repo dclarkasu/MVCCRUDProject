@@ -20,6 +20,7 @@ Linking CSS into JSP partials
 
 
 ## Future Goals
+Session
 Multiple classes of students
 Better front end
 Use TDD

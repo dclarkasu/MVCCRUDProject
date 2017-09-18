@@ -12,5 +12,3 @@
 		<li><a href="newStudent.jsp">Add New Student</a></li>
 	</ul>
 </div>
-<!-- <a href="EditExistingStudent.do">Edit Student</a><br/>
-<a href="removeStudent.jsp">Remove Student</a><br/> -->

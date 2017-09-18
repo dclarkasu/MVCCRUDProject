@@ -23,9 +23,12 @@
 			</c:otherwise>
 		</c:choose>
 		<form action="EditExistingStudent.do" method="POST">
+			<input type="hidden" name="id" value="${student.id}" />
 			<input type="submit" name="editStudent" value="Edit Student">
-			<input type="submit" name="editStudent" value="Remove Student">
-			<%-- <input type=“hidden” value="${student.id}" /> --%>
+		</form>
+		<form action="RemoveStudent.do" method="POST">
+			<input type="hidden" name="id" value="${student.id}" />
+			<input type="submit" name="removeStudent" value="Remove Student">
 		</form>
 		<jsp:include page="currentList.jsp"></jsp:include>
 	</div>
