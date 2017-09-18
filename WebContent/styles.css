@@ -10,7 +10,7 @@ body {
 	/*text-decoration-color: yellow;*/
 	text-decoration: none;
 	font-size: 20px;
-	font-family: 'Cabin Sketch', cursive;
+	font-family: 'Cabin Sketch';
 }
 
 
@@ -21,17 +21,18 @@ body {
 	text-decoration-color: black;
 	color: black;
 	text-align: center;
+	font-family: 'Cabin Sketch';
 }
 .currentList a {
 	color: yellow;
 	text-decoration: none;
-	font-family: 'Cabin Sketch', cursive;
+	font-family: 'Cabin Sketch';
 }
 .currentList a:hover {
 	color: blue;
 }
 .resultList {
-	font-family: 'Cabin Sketch', cursive;
+	font-family: 'Cabin Sketch';
 }
 .resultList:hover {
 	color: blue;
