@@ -10,7 +10,4 @@ public interface StudentDAO {
 	public Student getStudentById(int id);
 	public List<Student> getAllStudents();
 	
-//  public Student getStateByAbbreviation(String abbreviation);
-//  public Student getNextState(Student state);
-//  public Student getPreviousState(Student state);
 }

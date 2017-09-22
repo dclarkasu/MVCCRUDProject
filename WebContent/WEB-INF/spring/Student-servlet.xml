@@ -15,6 +15,6 @@
 		<property name="suffix" value=".jsp"></property>
 		</bean> -->
 
-	<!-- <bean id="dao" class="data.StateDAOImpl"/> -->
+	<bean id="dao" class="com.danielclark.data.StudentDAODBImpl"/>
 	<mvc:annotation-driven/>
 </beans>
