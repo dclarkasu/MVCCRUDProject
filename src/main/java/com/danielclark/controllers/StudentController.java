@@ -79,7 +79,7 @@ public class StudentController {
 	public ModelAndView editedStudent(@RequestParam("id") int id, Student inStudent) {// Spring magic makes new command object
 		ModelAndView mv = new ModelAndView();
 		Student stud = studentDAO.getStudentById(id);
-		studentDAO.updateStudent(stud, id, inStudent.getFirstName(), inStudent.getLastName(), inStudent.getGrade());
+		studentDAO.updateStudent(stud, inStudent.getFirstName(), inStudent.getLastName(), inStudent.getGrade());
 		mv.setViewName("/listStudents.do");
 		mv.addObject("message", "New Student Added");
 		mv.addObject("student", stud);

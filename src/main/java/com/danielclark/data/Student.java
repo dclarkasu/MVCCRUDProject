@@ -14,7 +14,15 @@ public class Student {
 		this.lastName = lastName;
 		this.grade = grade;
 	}
-
+	
+	public Student(int id, String firstName, String lastName, int grade) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.id = id;
+		this.grade = grade;
+	}
+	
 	public Student(String firstName, String lastName, int id, int grade) {
 		super();
 		this.firstName = firstName;

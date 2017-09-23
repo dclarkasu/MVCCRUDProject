@@ -9,5 +9,6 @@ public interface StudentDAO {
 	public Student updateStudent(Student stud, int id, String firstName, String lastName, int grade);
 	public Student getStudentById(int id);
 	public List<Student> getAllStudents();
+	public Student updateStudent(Student stud, String firstName, String lastName, int grade);
 	
 }
