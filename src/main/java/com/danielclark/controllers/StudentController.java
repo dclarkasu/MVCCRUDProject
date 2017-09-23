@@ -34,7 +34,8 @@ public class StudentController {
 		mv.addObject("student", stud);
 		mv.addObject("message", "New Student Added");
 		mv.addObject("students", studentDAO.getAllStudents());
-		mv.setViewName("/listStudents.do");
+		mv.setViewName("redirect:home.do");
+//		mv.setViewName("/listStudents.do");
 		return mv;
 	}
 	@RequestMapping(path="/RemoveStudent.do", method=RequestMethod.POST)

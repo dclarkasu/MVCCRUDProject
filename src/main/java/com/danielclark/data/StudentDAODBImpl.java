@@ -18,7 +18,6 @@ import org.springframework.web.context.WebApplicationContext;
 @Primary
 public class StudentDAODBImpl implements StudentDAO {
 //	private static final String FILE_NAME = "/WEB-INF/students.csv";
-	private List<Student> students = new ArrayList<>();
 	private static String url = "jdbc:mysql://localhost:3306/studentdb";
 	private String user = "studentdb";
 	private String pass = "studentdb";
